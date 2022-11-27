@@ -38,13 +38,13 @@ app.post('/app/roll/', (req, res) => {
 })
 
 // /app/roll/:sides/ endpoint
-app.get('/app/roll/:sides', (req, res) => {
+app.get('/app/roll/:sides/', (req, res) => {
     res.status(200);
 
     // var dice = req.body.dice
     // var rolls = req.body.rolls
 
-    res.send(JSON.stringify(roll(req.params['sides'], 2, 1)));
+    res.send(JSON.stringify(roll(parseInt(req.params['sides']), 2, 1)));
 })
 
 // /app/roll/:sides/:dice/ endpoint
@@ -53,14 +53,14 @@ app.get('/app/roll/:sides/:dice/', (req, res) => {
 
     // var rolls = req.body.rolls
     
-    res.send(JSON.stringify(roll(req.params['sides'], req.params['dice'], 1)));
+    res.send(JSON.stringify(roll(parseInt(req.params['sides']), parseInt(req.params['dice']), 1)));
 })
 
 // /app/roll/:sides/:dice/:rolls/ endpoint
 app.get('/app/roll/:sides/:dice/:rolls/', (req, res) => {
     res.status(200);
 
-    res.send(JSON.stringify(roll(req.params['sides'], req.params['dice'], req.params['rolls'])));
+    res.send(JSON.stringify(roll(parseInt(req.params['sides']), parseInt(req.params['dice']), parseInt(req.params['rolls']))));
 })
 
 // default endpoint should be in the end
